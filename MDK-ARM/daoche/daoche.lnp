@@ -1,0 +1,27 @@
+--cpu=Cortex-M4.fp.sp
+"daoche\startup_stm32f407xx.o"
+"daoche\main.o"
+"daoche\gpio.o"
+"daoche\spi.o"
+"daoche\stm32f4xx_it.o"
+"daoche\stm32f4xx_hal_msp.o"
+"daoche\stm32f4xx_hal_spi.o"
+"daoche\stm32f4xx_hal_rcc.o"
+"daoche\stm32f4xx_hal_rcc_ex.o"
+"daoche\stm32f4xx_hal_flash.o"
+"daoche\stm32f4xx_hal_flash_ex.o"
+"daoche\stm32f4xx_hal_flash_ramfunc.o"
+"daoche\stm32f4xx_hal_gpio.o"
+"daoche\stm32f4xx_hal_dma_ex.o"
+"daoche\stm32f4xx_hal_dma.o"
+"daoche\stm32f4xx_hal_pwr.o"
+"daoche\stm32f4xx_hal_pwr_ex.o"
+"daoche\stm32f4xx_hal_cortex.o"
+"daoche\stm32f4xx_hal.o"
+"daoche\stm32f4xx_hal_exti.o"
+"daoche\system_stm32f4xx.o"
+"daoche\lcd.o"
+--strict --scatter "daoche\daoche.sct"
+--summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list "daoche.map" -o daoche\daoche.axf
