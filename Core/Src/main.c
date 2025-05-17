@@ -99,7 +99,7 @@ int main(void)
 //SysTick_Init();
     // 初始化LCD
     LCD_Init();
-		ov2640_init();
+		while(ov2640_init());
     
     // 填充屏幕颜色
     LCD_Fill(COLOR_RED);

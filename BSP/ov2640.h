@@ -95,6 +95,8 @@
 #define OV2640_SENSOR_HISTO_HIGH 0x62
 
 uint8_t ov2640_init(void);
+void OV2640_JPEG_Mode(void);
+uint8_t OV2640_OutSize_Set(uint16_t width, uint16_t height);
 #endif
 
 
