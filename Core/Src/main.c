@@ -24,6 +24,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "LCD.h"
+#include "ov2640.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -95,8 +96,10 @@ int main(void)
   MX_GPIO_Init();
   MX_SPI3_Init();
   /* USER CODE BEGIN 2 */
+//SysTick_Init();
     // 初始化LCD
     LCD_Init();
+		ov2640_init();
     
     // 填充屏幕颜色
     LCD_Fill(COLOR_RED);

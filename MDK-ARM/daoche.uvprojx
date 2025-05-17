@@ -314,7 +314,7 @@
           </ArmAdsMisc>
           <Cads>
             <interw>1</interw>
-            <Optim>4</Optim>
+            <Optim>1</Optim>
             <oTime>0</oTime>
             <SplitLS>0</SplitLS>
             <OneElfS>1</OneElfS>
@@ -519,6 +519,26 @@
               <FileType>5</FileType>
               <FilePath>..\BSP\LCD.h</FilePath>
             </File>
+            <File>
+              <FileName>sccb.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\BSP\sccb.c</FilePath>
+            </File>
+            <File>
+              <FileName>sccb.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\BSP\sccb.h</FilePath>
+            </File>
+            <File>
+              <FileName>ov2640.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\BSP\ov2640.c</FilePath>
+            </File>
+            <File>
+              <FileName>ov2640.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\BSP\ov2640.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -540,5 +560,14 @@
     </components>
     <files/>
   </RTE>
+
+  <LayerInfo>
+    <Layers>
+      <Layer>
+        <LayName>daoche</LayName>
+        <LayPrjMark>1</LayPrjMark>
+      </Layer>
+    </Layers>
+  </LayerInfo>
 
 </Project>

@@ -63,6 +63,14 @@ void Error_Handler(void);
 #define LCD_DC_GPIO_Port GPIOD
 #define LCD_RST_Pin GPIO_PIN_2
 #define LCD_RST_GPIO_Port GPIOD
+#define OV2640_PWDN_Pin GPIO_PIN_9
+#define OV2640_PWDN_GPIO_Port GPIOG
+#define OV2640_RST_Pin GPIO_PIN_15
+#define OV2640_RST_GPIO_Port GPIOG
+#define OV2640_SCL_Pin GPIO_PIN_8
+#define OV2640_SCL_GPIO_Port GPIOB
+#define OV2640_SDA_Pin GPIO_PIN_9
+#define OV2640_SDA_GPIO_Port GPIOB
 
 /* USER CODE BEGIN Private defines */
 

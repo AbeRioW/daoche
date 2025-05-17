@@ -21,6 +21,8 @@
 "daoche\stm32f4xx_hal_exti.o"
 "daoche\system_stm32f4xx.o"
 "daoche\lcd.o"
+"daoche\sccb.o"
+"daoche\ov2640.o"
 --strict --scatter "daoche\daoche.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

@@ -8,6 +8,9 @@
 #define LCD_HEIGHT      320
 
 
+
+
+
 void LCD_Init(void);
 void LCD_SetWindow(uint16_t x0, uint16_t y0, uint16_t x1, uint16_t y1);
 void LCD_Fill(uint16_t color);
