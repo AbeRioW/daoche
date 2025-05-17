@@ -56,38 +56,6 @@ void LCD_Fill(uint16_t color) {
     }
 }
 
-
-void ILI9341_DrawImage(uint16_t x, uint16_t y, uint16_t w, uint16_t h, uint16_t *img)
-{
-    LCD_SetWindow(x, y, x + w - 1, y + h - 1);
-    
-    HAL_GPIO_WritePin(SPI_CS_GPIO_Port, SPI_CS_Pin, GPIO_PIN_RESET);
-    HAL_GPIO_WritePin(LCD_DC_GPIO_Port, LCD_DC_Pin, GPIO_PIN_SET);
-    
-    HAL_SPI_Transmit(&hspi3, (uint8_t*)img, w * h * 2, HAL_MAX_DELAY);
-    
-    HAL_GPIO_WritePin(SPI_CS_GPIO_Port, SPI_CS_Pin, GPIO_PIN_SET);
-}
-
-void ILI9341_SetRotation(uint8_t rotation)
-{
-    LCD_WriteCommand(0x36);
-    switch(rotation) {
-        case 0:
-            LCD_WriteData(0x48);
-            break;
-        case 1:
-            LCD_WriteData(0x28);
-            break;
-        case 2:
-            LCD_WriteData(0x88);
-            break;
-        case 3:
-            LCD_WriteData(0xE8);
-            break;
-    }
-}
-
 // ILI9341初始化
 void LCD_Init(void) {
     // 硬件复位
