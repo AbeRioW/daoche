@@ -32,3 +32,9 @@ daoche\dcmi.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h
 daoche\dcmi.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h
 daoche\dcmi.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h
 daoche\dcmi.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h
+daoche\dcmi.o: ../Core/Inc/dcmi.h
+daoche\dcmi.o: ../BSP/LCD.h
+daoche\dcmi.o: ../Core/Inc/gpio.h
+daoche\dcmi.o: ../Core/Inc/spi.h
+daoche\dcmi.o: ../BSP/ov2640.h
+daoche\dcmi.o: ../BSP/sccb.h

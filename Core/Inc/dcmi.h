@@ -29,7 +29,9 @@ extern "C" {
 #include "main.h"
 
 /* USER CODE BEGIN Includes */
-
+#include "dcmi.h"
+#include "LCD.h"
+#include "ov2640.h"
 /* USER CODE END Includes */
 
 extern DCMI_HandleTypeDef hdcmi;

@@ -32,9 +32,10 @@ daoche\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h
 daoche\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h
 daoche\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h
 daoche\main.o: ../Core/Inc/dcmi.h
-daoche\main.o: ../Core/Inc/dma.h
-daoche\main.o: ../Core/Inc/spi.h
-daoche\main.o: ../Core/Inc/gpio.h
+daoche\main.o: ../Core/Inc/dcmi.h
 daoche\main.o: ../BSP/LCD.h
+daoche\main.o: ../Core/Inc/gpio.h
+daoche\main.o: ../Core/Inc/spi.h
 daoche\main.o: ../BSP/ov2640.h
 daoche\main.o: ../BSP/sccb.h
+daoche\main.o: ../Core/Inc/dma.h

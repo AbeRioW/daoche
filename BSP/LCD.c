@@ -169,3 +169,35 @@ void LCD_Init(void) {
     LCD_WriteCommand(0x29);    //Display on
     LCD_WriteCommand(0x2C);    //开始显示
 }
+
+// 绘制图像
+void ILI9341_DrawImage(uint16_t x, uint16_t y, uint16_t w, uint16_t h, uint8_t *img)
+{
+    // 设置显示窗口
+    LCD_SetWindow(x, y, x + w - 1, y + h - 1);
+    
+    // 发送图像数据
+    HAL_GPIO_WritePin(LCD_DC_GPIO_Port, LCD_DC_Pin, GPIO_PIN_SET); // 数据模式
+    HAL_GPIO_WritePin(SPI_CS_GPIO_Port, SPI_CS_Pin, GPIO_PIN_RESET); // 选中LCD
+    
+    uint32_t size = w * h * 2; // RGB565每个像素2字节
+    HAL_SPI_Transmit(&hspi3,img, size, 1000);
+    
+    HAL_GPIO_WritePin(SPI_CS_GPIO_Port, SPI_CS_Pin, GPIO_PIN_SET); // 取消选中LCD
+}
+
+#define SIZE 64
+uint8_t checkerboard[SIZE * SIZE * 2];
+
+void createCheckerboard() {
+    for(int y = 0; y < SIZE; y++) {
+        for(int x = 0; x < SIZE; x++) {
+            uint16_t color = ((x / 8 + y / 8) % 2) ? 0xFFFF : 0x0000; // 黑白交替
+            int index = (y * SIZE + x) * 2;
+            checkerboard[index] = color >> 8;
+            checkerboard[index+1] = color & 0xFF;
+        }
+    }
+		
+		ILI9341_DrawImage(50,50,SIZE,SIZE,checkerboard);
+}

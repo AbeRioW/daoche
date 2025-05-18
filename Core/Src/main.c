@@ -64,7 +64,8 @@ void SystemClock_Config(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-
+// 图像缓冲区
+uint8_t jpeg_buf[320*240*2]; // 假设最大为QVGA JPEG图像
 /* USER CODE END 0 */
 
 /**
@@ -104,14 +105,20 @@ int main(void)
     // 初始化LCD
     LCD_Init();
 		while(ov2640_init());
-    
-    // 填充屏幕颜色
-    LCD_Fill(COLOR_RED);
-    HAL_Delay(1000);
-    LCD_Fill(COLOR_GREEN);
-    HAL_Delay(1000);
-    LCD_Fill(COLOR_BLUE);
-    HAL_Delay(1000);
+		 OV2640_SetResolution(QVGA_WIDTH, QVGA_HEIGHT);
+    OV2640_SetImageFormat(IMAGE_FORMAT_RGB565);
+
+    // 开始捕获图像
+    OV2640_StartCapture();		
+        // 开始连续捕获
+//    // 填充屏幕颜色
+//    LCD_Fill(COLOR_RED);
+//    HAL_Delay(1000);
+//    LCD_Fill(COLOR_GREEN);
+//    HAL_Delay(1000);
+//    LCD_Fill(COLOR_BLUE);
+//    HAL_Delay(1000);
+		
   /* USER CODE END 2 */
 
   /* Infinite loop */

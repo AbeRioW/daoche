@@ -2,7 +2,7 @@
 #define __OV2640_H__
 
 #include "sccb.h"
-
+#include "dcmi.h"
 
 #define OV2640_PWDN  	    PGout(9)			//POWER DOWN控制信号
 #define OV2640_RST  	    PGout(15)			//复位控制信号
@@ -94,9 +94,34 @@
 #define OV2640_SENSOR_HISTO_LOW  0x61
 #define OV2640_SENSOR_HISTO_HIGH 0x62
 
+
+// 图像格式定义
+#define IMAGE_FORMAT_RGB565  0
+#define IMAGE_FORMAT_JPEG    1
+
+// 分辨率定义
+#define QQVGA_WIDTH         160
+#define QQVGA_HEIGHT        120
+#define QVGA_WIDTH          320
+#define QVGA_HEIGHT         240
+
 uint8_t ov2640_init(void);
-void OV2640_JPEG_Mode(void);
-uint8_t OV2640_OutSize_Set(uint16_t width, uint16_t height);
+//void OV2640_JPEG_Mode(void);
+//void OV2640_RGB565_Mode(void);
+extern uint8_t image_buffer[QVGA_WIDTH * QVGA_HEIGHT]; 
+
+
+//uint8_t OV2640_OutSize_Set(uint16_t width, uint16_t height);
+//void OV2640_SetImageFormat(uint8_t format);
+//uint8_t OV2640_ImageWin_Set(uint16_t offx,uint16_t offy,uint16_t width,uint16_t height);
+//void OV2640_ImageSize_Set(uint16_t width,uint16_t height);
+//uint8_t OV2640_OutSize_Set(uint16_t width, uint16_t height);
+
+void OV2640_SetImageFormat(uint8_t format);
+void OV2640_SetResolution(uint16_t width, uint16_t height);
+void OV2640_StartCapture(void);
+// 停止捕获
+void OV2640_StopCapture(void);
 #endif
 
 
