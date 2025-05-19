@@ -3,7 +3,7 @@
 <title>Static Call Graph - [daoche\daoche.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image daoche\daoche.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Mon May 19 21:30:30 2025
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Mon May 19 22:19:49 2025
 <BR><P>
 <H3>Maximum Stack Usage =        304 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -722,7 +722,7 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_DMA_Start_IT
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_DMAEx_MultiBufferStart_IT
 </UL>
-<BR>[Called By]<UL><LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OV2640_StartCapture
+<BR>[Called By]<UL><LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OV2640_StartCapture
 </UL>
 
 <P><STRONG><a name="[88]"></a>HAL_DCMI_VsyncEventCallback</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32f4xx_hal_dcmi.o(i.HAL_DCMI_VsyncEventCallback))
@@ -776,7 +776,6 @@ Global Symbols
 </UL>
 <BR>[Called By]<UL><LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ov2640_init
 <LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Init
-<LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OV2640_WriteRegList
 </UL>
 
 <P><STRONG><a name="[8c]"></a>HAL_GPIO_Init</STRONG> (Thumb, 454 bytes, Stack size 24 bytes, stm32f4xx_hal_gpio.o(i.HAL_GPIO_Init))
@@ -932,9 +931,9 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 112<LI>Call Chain = LCD_Init &rArr; LCD_WriteData &rArr; HAL_SPI_Transmit &rArr; SPI_EndRxTxTransaction &rArr; SPI_WaitFlagStateUntilTimeout
 </UL>
 <BR>[Calls]<UL><LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
+<LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Delay
 <LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_WriteData
 <LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_WriteCommand
-<LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Delay
 </UL>
 <BR>[Called By]<UL><LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -1000,8 +999,8 @@ Global Symbols
 <P><STRONG><a name="[b1]"></a>MX_DCMI_Init</STRONG> (Thumb, 58 bytes, Stack size 8 bytes, dcmi.o(i.MX_DCMI_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = MX_DCMI_Init &rArr; HAL_DCMI_Init &rArr; HAL_DCMI_MspInit &rArr; HAL_NVIC_SetPriority &rArr; __NVIC_SetPriority
 </UL>
-<BR>[Calls]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_DCMI_Init
-<LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Error_Handler
+<BR>[Calls]<UL><LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Error_Handler
+<LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_DCMI_Init
 </UL>
 <BR>[Called By]<UL><LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -1040,27 +1039,36 @@ Global Symbols
 <P><STRONG><a name="[4]"></a>NMI_Handler</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f4xx_it.o(i.NMI_Handler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f407xx.o(RESET)
 </UL>
-<P><STRONG><a name="[b5]"></a>OV2640_SetImageFormat</STRONG> (Thumb, 28 bytes, Stack size 8 bytes, ov2640.o(i.OV2640_SetImageFormat))
-<BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = OV2640_SetImageFormat &rArr; OV2640_WriteRegList &rArr; SCCB_WR_Reg &rArr; SCCB_WR_Byte &rArr; delay_us
+<P><STRONG><a name="[b5]"></a>OV2640_OutSize_Set</STRONG> (Thumb, 144 bytes, Stack size 24 bytes, ov2640.o(i.OV2640_OutSize_Set))
+<BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = OV2640_OutSize_Set &rArr; SCCB_WR_Reg &rArr; SCCB_WR_Byte &rArr; delay_us
 </UL>
-<BR>[Calls]<UL><LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OV2640_WriteRegList
+<BR>[Calls]<UL><LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCCB_WR_Reg
 </UL>
-<BR>[Called By]<UL><LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ov2640_init
-<LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<BR>[Called By]<UL><LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OV2640_UXGAConfig
 </UL>
 
-<P><STRONG><a name="[b7]"></a>OV2640_SetResolution</STRONG> (Thumb, 78 bytes, Stack size 16 bytes, ov2640.o(i.OV2640_SetResolution))
-<BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = OV2640_SetResolution &rArr; SCCB_WR_Reg &rArr; SCCB_WR_Byte &rArr; delay_us
+<P><STRONG><a name="[b7]"></a>OV2640_Reset</STRONG> (Thumb, 20 bytes, Stack size 8 bytes, ov2640.o(i.OV2640_Reset))
+<BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = OV2640_Reset &rArr; SCCB_WR_Reg &rArr; SCCB_WR_Byte &rArr; delay_us
 </UL>
-<BR>[Calls]<UL><LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCCB_WR_Reg
+<BR>[Calls]<UL><LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCCB_WR_Reg
+</UL>
+<BR>[Called By]<UL><LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OV2640_UXGAConfig
+</UL>
+
+<P><STRONG><a name="[b8]"></a>OV2640_StartCapture</STRONG> (Thumb, 20 bytes, Stack size 8 bytes, ov2640.o(i.OV2640_StartCapture))
+<BR><BR>[Stack]<UL><LI>Max Depth = 84<LI>Call Chain = OV2640_StartCapture &rArr; HAL_DCMI_Start_DMA &rArr; HAL_DMA_Start_IT &rArr; DMA_SetConfig
+</UL>
+<BR>[Calls]<UL><LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_DCMI_Start_DMA
 </UL>
 <BR>[Called By]<UL><LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[b9]"></a>OV2640_StartCapture</STRONG> (Thumb, 20 bytes, Stack size 8 bytes, ov2640.o(i.OV2640_StartCapture))
-<BR><BR>[Stack]<UL><LI>Max Depth = 84<LI>Call Chain = OV2640_StartCapture &rArr; HAL_DCMI_Start_DMA &rArr; HAL_DMA_Start_IT &rArr; DMA_SetConfig
+<P><STRONG><a name="[b9]"></a>OV2640_UXGAConfig</STRONG> (Thumb, 104 bytes, Stack size 8 bytes, ov2640.o(i.OV2640_UXGAConfig))
+<BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = OV2640_UXGAConfig &rArr; OV2640_OutSize_Set &rArr; SCCB_WR_Reg &rArr; SCCB_WR_Byte &rArr; delay_us
 </UL>
-<BR>[Calls]<UL><LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_DCMI_Start_DMA
+<BR>[Calls]<UL><LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OV2640_Reset
+<LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OV2640_OutSize_Set
+<LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCCB_WR_Reg
 </UL>
 <BR>[Called By]<UL><LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -1087,12 +1095,12 @@ Global Symbols
 <P><STRONG><a name="[bd]"></a>SCCB_RD_Reg</STRONG> (Thumb, 78 bytes, Stack size 12 bytes, sccb.o(i.SCCB_RD_Reg))
 <BR><BR>[Stack]<UL><LI>Max Depth = 44<LI>Call Chain = SCCB_RD_Reg &rArr; SCCB_WR_Byte &rArr; delay_us
 </UL>
-<BR>[Calls]<UL><LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCCB_WR_Byte
+<BR>[Calls]<UL><LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_us
+<LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCCB_WR_Byte
 <LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCCB_Stop
 <LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCCB_Start
 <LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCCB_RD_Byte
 <LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCCB_No_Ack
-<LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_us
 </UL>
 <BR>[Called By]<UL><LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ov2640_init
 </UL>
@@ -1102,8 +1110,8 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_us
 </UL>
-<BR>[Called By]<UL><LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCCB_RD_Reg
-<LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCCB_WR_Reg
+<BR>[Called By]<UL><LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCCB_WR_Reg
+<LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCCB_RD_Reg
 </UL>
 
 <P><STRONG><a name="[c0]"></a>SCCB_Stop</STRONG> (Thumb, 42 bytes, Stack size 4 bytes, sccb.o(i.SCCB_Stop))
@@ -1111,8 +1119,8 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_us
 </UL>
-<BR>[Called By]<UL><LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCCB_RD_Reg
-<LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCCB_WR_Reg
+<BR>[Called By]<UL><LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCCB_WR_Reg
+<LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCCB_RD_Reg
 </UL>
 
 <P><STRONG><a name="[bf]"></a>SCCB_WR_Byte</STRONG> (Thumb, 154 bytes, Stack size 16 bytes, sccb.o(i.SCCB_WR_Byte))
@@ -1120,21 +1128,22 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_us
 </UL>
-<BR>[Called By]<UL><LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCCB_RD_Reg
-<LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCCB_WR_Reg
+<BR>[Called By]<UL><LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCCB_WR_Reg
+<LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCCB_RD_Reg
 </UL>
 
-<P><STRONG><a name="[b8]"></a>SCCB_WR_Reg</STRONG> (Thumb, 62 bytes, Stack size 16 bytes, sccb.o(i.SCCB_WR_Reg))
+<P><STRONG><a name="[b6]"></a>SCCB_WR_Reg</STRONG> (Thumb, 62 bytes, Stack size 16 bytes, sccb.o(i.SCCB_WR_Reg))
 <BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = SCCB_WR_Reg &rArr; SCCB_WR_Byte &rArr; delay_us
 </UL>
-<BR>[Calls]<UL><LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCCB_WR_Byte
+<BR>[Calls]<UL><LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_us
+<LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCCB_WR_Byte
 <LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCCB_Stop
 <LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCCB_Start
-<LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_us
 </UL>
 <BR>[Called By]<UL><LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ov2640_init
-<LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OV2640_SetResolution
-<LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OV2640_WriteRegList
+<LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OV2640_UXGAConfig
+<LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OV2640_Reset
+<LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OV2640_OutSize_Set
 </UL>
 
 <P><STRONG><a name="[9]"></a>SVC_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32f4xx_it.o(i.SVC_Handler))
@@ -1167,22 +1176,21 @@ Global Symbols
 <P><STRONG><a name="[bb]"></a>delay_us</STRONG> (Thumb, 72 bytes, Stack size 16 bytes, sccb.o(i.delay_us))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = delay_us
 </UL>
-<BR>[Called By]<UL><LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCCB_WR_Byte
+<BR>[Called By]<UL><LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCCB_WR_Reg
+<LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCCB_WR_Byte
 <LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCCB_Stop
 <LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCCB_Start
 <LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCCB_RD_Reg
 <LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCCB_RD_Byte
 <LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCCB_No_Ack
-<LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCCB_WR_Reg
 </UL>
 
-<P><STRONG><a name="[72]"></a>main</STRONG> (Thumb, 60 bytes, Stack size 0 bytes, main.o(i.main))
+<P><STRONG><a name="[72]"></a>main</STRONG> (Thumb, 50 bytes, Stack size 0 bytes, main.o(i.main))
 <BR><BR>[Stack]<UL><LI>Max Depth = 176<LI>Call Chain = main &rArr; SystemClock_Config &rArr; HAL_RCC_ClockConfig &rArr; HAL_RCC_GetSysClockFreq &rArr; __aeabi_uldivmod
 </UL>
 <BR>[Calls]<UL><LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ov2640_init
-<LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OV2640_StartCapture
-<LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OV2640_SetResolution
-<LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OV2640_SetImageFormat
+<LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OV2640_UXGAConfig
+<LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OV2640_StartCapture
 <LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_SPI3_Init
 <LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_GPIO_Init
 <LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_DMA_Init
@@ -1194,14 +1202,12 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry_main
 </UL>
 
-<P><STRONG><a name="[c4]"></a>ov2640_init</STRONG> (Thumb, 170 bytes, Stack size 8 bytes, ov2640.o(i.ov2640_init))
-<BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = ov2640_init &rArr; OV2640_SetImageFormat &rArr; OV2640_WriteRegList &rArr; SCCB_WR_Reg &rArr; SCCB_WR_Byte &rArr; delay_us
+<P><STRONG><a name="[c4]"></a>ov2640_init</STRONG> (Thumb, 156 bytes, Stack size 8 bytes, ov2640.o(i.ov2640_init))
+<BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = ov2640_init &rArr; SCCB_WR_Reg &rArr; SCCB_WR_Byte &rArr; delay_us
 </UL>
-<BR>[Calls]<UL><LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OV2640_SetImageFormat
+<BR>[Calls]<UL><LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Delay
+<LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCCB_WR_Reg
 <LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCCB_RD_Reg
-<LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Delay
-<LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OV2640_WriteRegList
-<LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCCB_WR_Reg
 </UL>
 <BR>[Called By]<UL><LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -1279,16 +1285,6 @@ Local Symbols
 <BR>[Calls]<UL><LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GetTick
 </UL>
 <BR>[Called By]<UL><LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_EndRxTxTransaction
-</UL>
-
-<P><STRONG><a name="[b6]"></a>OV2640_WriteRegList</STRONG> (Thumb, 40 bytes, Stack size 16 bytes, ov2640.o(i.OV2640_WriteRegList))
-<BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = OV2640_WriteRegList &rArr; SCCB_WR_Reg &rArr; SCCB_WR_Byte &rArr; delay_us
-</UL>
-<BR>[Calls]<UL><LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Delay
-<LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCCB_WR_Reg
-</UL>
-<BR>[Called By]<UL><LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ov2640_init
-<LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OV2640_SetImageFormat
 </UL>
 
 <P><STRONG><a name="[61]"></a>_printf_input_char</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, _printf_char_common.o(.text))

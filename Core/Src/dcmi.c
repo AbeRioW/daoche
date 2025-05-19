@@ -200,6 +200,10 @@ void HAL_DCMI_FrameEventCallback(DCMI_HandleTypeDef *hdcmi)
 			 i++;
 		 sprintf(show_data,"Capture:%d",i);
 		 LCD_ShowString(0,20,16,show_data,0);	
+		 
+		         // 清除帧捕获中断标志
+//        __HAL_DCMI_CLEAR_FLAG(hdcmi, DCMI_FLAG_FRAME);
+//		  HAL_DCMI_Start_DMA(hdcmi, DCMI_MODE_CONTINUOUS, (uint32_t)image_buffer, QVGA_WIDTH * QVGA_HEIGHT);
 	//createCheckerboard();
 	 }
 }

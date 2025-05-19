@@ -4,6 +4,18 @@
 #include "sccb.h"
 #include "dcmi.h"
 
+/* Image Sizes enumeration */
+typedef enum   
+{
+  BMP_QQVGA             =   0x00,	    /* BMP Image QQVGA 160x120 Size */
+  BMP_QVGA              =   0x01,      /* BMP Image VGA 800*480 Size */
+  JPEG_160x120          =   0x02,	    /* JPEG Image 160x120 Size */
+  JPEG_176x144          =   0x03,	    /* JPEG Image 176x144 Size */
+  JPEG_320x240          =   0x04,	    /* JPEG Image 320x240 Size */
+  JPEG_352x288          =   0x05	    /* JPEG Image 352x288 Size */
+}ImageFormat_TypeDef;
+
+
 #define OV2640_PWDN  	    PGout(9)			//POWER DOWN控制信号
 #define OV2640_RST  	    PGout(15)			//复位控制信号
 
@@ -99,27 +111,29 @@
 #define IMAGE_FORMAT_RGB565  0
 #define IMAGE_FORMAT_JPEG    1
 
-// 分辨率定义
+// 分辨率定
 #define QQVGA_WIDTH         160
 #define QQVGA_HEIGHT        120
 #define QVGA_WIDTH          160
 #define QVGA_HEIGHT         120
 
+extern uint8_t image_buffer[QVGA_WIDTH * QVGA_HEIGHT]; // QVGA RGB565图像缓冲区
+
 uint8_t ov2640_init(void);
-//void OV2640_JPEG_Mode(void);
-//void OV2640_RGB565_Mode(void);
-extern uint8_t image_buffer[QVGA_WIDTH * QVGA_HEIGHT]; 
-
-
-//uint8_t OV2640_OutSize_Set(uint16_t width, uint16_t height);
-//void OV2640_SetImageFormat(uint8_t format);
-//uint8_t OV2640_ImageWin_Set(uint16_t offx,uint16_t offy,uint16_t width,uint16_t height);
-//void OV2640_ImageSize_Set(uint16_t width,uint16_t height);
-//uint8_t OV2640_OutSize_Set(uint16_t width, uint16_t height);
-
-void OV2640_SetImageFormat(uint8_t format);
-void OV2640_SetResolution(uint16_t width, uint16_t height);
 void OV2640_StartCapture(void);
+
+
+void OV2640_Reset(void);
+void OV2640_QQVGAConfig(void);
+uint8_t OV2640_OutSize_Set(uint16_t width,uint16_t height);
+
+
+void OV2640_UXGAConfig(void);
+void OV2640_JPEGConfig(ImageFormat_TypeDef ImageFormat);
+
+void OV2640_LightMode(uint8_t mode);
+void OV2640_SpecialEffects(uint8_t mode);
+
 // 停止捕获
 void OV2640_StopCapture(void);
 #endif

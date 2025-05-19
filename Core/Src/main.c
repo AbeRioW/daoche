@@ -101,8 +101,7 @@ int main(void)
     // 初始化LCD
     LCD_Init();
 		while(ov2640_init());
-		 OV2640_SetResolution(QVGA_WIDTH, QVGA_HEIGHT);
-    OV2640_SetImageFormat(IMAGE_FORMAT_RGB565);
+		OV2640_UXGAConfig();
 
     // 开始捕获图像
     OV2640_StartCapture();		
