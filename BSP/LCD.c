@@ -266,3 +266,4 @@ void LCD_ShowString(uint16_t x,uint16_t y,uint8_t size,uint8_t *p,uint8_t mode)
         p++;
     }  
 } 
+

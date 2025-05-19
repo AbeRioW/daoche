@@ -39,3 +39,4 @@ daoche\main.o: ../Core/Inc/spi.h
 daoche\main.o: ../BSP/ov2640.h
 daoche\main.o: ../BSP/sccb.h
 daoche\main.o: ../Core/Inc/dma.h
+daoche\main.o: D:\programFiles\KEIL5\ARM\ARMCC\Bin\..\include\stdio.h

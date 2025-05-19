@@ -197,9 +197,10 @@ void HAL_DCMI_FrameEventCallback(DCMI_HandleTypeDef *hdcmi)
 		 if(hdcmi->Instance==DCMI)
 	 {
    //ILI9341_DrawImage(0, 0, QVGA_WIDTH, QVGA_HEIGHT, image_buffer);
+		 		   ILI9341_DrawImage(0, 0, QVGA_WIDTH, QVGA_HEIGHT, image_buffer);
 			 i++;
 		 sprintf(show_data,"Capture:%d",i);
-		 LCD_ShowString(0,20,16,show_data,0);	
+		 LCD_ShowString(0,180,16,show_data,0);	
 		 
 		         // 清除帧捕获中断标志
 //        __HAL_DCMI_CLEAR_FLAG(hdcmi, DCMI_FLAG_FRAME);

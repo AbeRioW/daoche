@@ -27,6 +27,7 @@
 /* USER CODE BEGIN Includes */
 #include "LCD.h"
 #include "ov2640.h"
+#include "stdio.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -102,6 +103,10 @@ int main(void)
     LCD_Init();
 		while(ov2640_init());
 		OV2640_UXGAConfig();
+		//OV2640_QQVGAConfig();
+		//memset(image_buffer,0xbb,320*240);
+
+		//OV2640_JPEGConfig(JPEG_160x120);
 
     // 开始捕获图像
     OV2640_StartCapture();		

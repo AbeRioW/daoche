@@ -54,7 +54,7 @@ uint8_t ov2640_init(void)
 void OV2640_StartCapture(void)
 {
     // 配置DCMI DMA传输
-    HAL_DCMI_Start_DMA(&hdcmi, DCMI_MODE_CONTINUOUS, (uint32_t)image_buffer[0], QVGA_WIDTH * QVGA_HEIGHT);
+    HAL_DCMI_Start_DMA(&hdcmi, DCMI_MODE_CONTINUOUS, (uint32_t)image_buffer, QVGA_WIDTH * QVGA_HEIGHT);
 }
 // 停止捕获
 void OV2640_StopCapture(void)
@@ -94,10 +94,22 @@ void OV2640_QQVGAConfig(void)
     SCCB_WR_Reg(OV2640_QQVGA[i][0], OV2640_QQVGA[i][1]);
     HAL_Delay(2);
   }
+	
+	  for(i=0; i<(sizeof(OV2640_QQVGA)/2); i++)
+  {
+    SCCB_WR_Reg(OV2640_QQVGA[i][0], OV2640_QQVGA[i][1]);
+    HAL_Delay(2);
+  }
+	
+	  for(i=0; i<(sizeof(OV2640_QQVGA)/2); i++)
+  {
+    SCCB_WR_Reg(OV2640_QQVGA[i][0], OV2640_QQVGA[i][1]);
+    HAL_Delay(2);
+  }
 }
 
 /*液晶屏的分辨率，用来计算地址偏移*/
-uint16_t lcd_width=160, lcd_height=120;
+uint16_t lcd_width=320, lcd_height=240;
 
 /*摄像头采集图像的大小，改变这两个值可以改变数据量，
 img_width和imgheight要求为4的倍数
@@ -132,6 +144,98 @@ uint8_t OV2640_OutSize_Set(uint16_t width,uint16_t height)
 	return 0;
 }
 
+
+/**未测试*/
+/**
+  * @brief  设置图像尺寸大小,也就是所选格式的输出分辨率
+  * @param  width,height:图像宽度和图像高度
+  * @retval 0,设置成功，其他,设置失败
+  */
+uint8_t OV2640_ImageSize_Set(uint16_t width,uint16_t height)
+{
+	uint8_t temp;
+	SCCB_WR_Reg(0XFF,0X00);
+	SCCB_WR_Reg(0XE0,0X04);
+	SCCB_WR_Reg(0XC0,(width)>>3&0XFF);		//设置HSIZE的10:3位
+	SCCB_WR_Reg(0XC1,(height)>>3&0XFF);		//设置VSIZE的10:3位
+	temp=(width&0X07)<<3;
+	temp|=height&0X07;
+	temp|=(width>>4)&0X80;
+	SCCB_WR_Reg(0X8C,temp);
+	SCCB_WR_Reg(0XE0,0X00);
+	return 0;
+}
+
+/**未测试*/
+/**
+  * @brief  设置图像输出窗口
+  * @param  sx,sy,起始地址
+						width,height:宽度(对应:horizontal)和高度(对应:vertical)
+  * @retval 0,设置成功， 其他,设置失败
+  */
+void OV2640_Window_Set(uint16_t sx,uint16_t sy,uint16_t width,uint16_t height)
+{
+	uint16_t endx;
+	uint16_t endy;
+	uint8_t temp;
+	endx=sx+width/2;	//V*2
+ 	endy=sy+height/2;
+
+ 	SCCB_WR_Reg(0XFF,0X01);
+	temp = SCCB_RD_Reg(0X03);				//读取Vref之前的值
+	temp&=0XF0;
+	temp|=((endy&0X03)<<2)|(sy&0X03);
+	SCCB_WR_Reg(0X03,temp);				//设置Vref的start和end的最低2位
+	SCCB_WR_Reg(0X19,sy>>2);			//设置Vref的start高8位
+	SCCB_WR_Reg(0X1A,endy>>2);			//设置Vref的end的高8位
+
+	temp = SCCB_RD_Reg(0X32);				//读取Href之前的值
+	temp&=0XC0;
+	temp|=((endx&0X07)<<3)|(sx&0X07);
+	SCCB_WR_Reg(0X32,temp);				//设置Href的start和end的最低3位
+	SCCB_WR_Reg(0X17,sx>>3);			//设置Href的start高8位
+	SCCB_WR_Reg(0X18,endx>>3);			//设置Href的end的高8位
+}
+
+//未测试
+/**
+  * @brief  设置图像开窗大小
+						由:OV2640_ImageSize_Set确定传感器输出分辨率从大小.
+						该函数则在这个范围上面进行开窗,用于OV2640_OutSize_Set的输出
+						注意:本函数的宽度和高度,必须大于等于OV2640_OutSize_Set函数的宽度和高度
+						     OV2640_OutSize_Set设置的宽度和高度,根据本函数设置的宽度和高度,由DSP
+						     自动计算缩放比例,输出给外部设备.
+  * @param  width,height:宽度(对应:horizontal)和高度(对应:vertical),width和height必须是4的倍数
+  * @retval 0,设置成功， 其他,设置失败
+  */
+uint8_t OV2640_ImageWin_Set(uint16_t offx,uint16_t offy,uint16_t width,uint16_t height)
+{
+	uint16_t hsize;
+	uint16_t vsize;
+	uint8_t temp;
+	if(width%4)return 1;
+	if(height%4)return 2;
+	hsize=width/4;
+	vsize=height/4;
+	SCCB_WR_Reg(0XFF,0X00);
+	SCCB_WR_Reg(0XE0,0X04);
+	SCCB_WR_Reg(0X51,hsize&0XFF);		//设置H_SIZE的低八位
+	SCCB_WR_Reg(0X52,vsize&0XFF);		//设置V_SIZE的低八位
+	SCCB_WR_Reg(0X53,offx&0XFF);		//设置offx的低八位
+	SCCB_WR_Reg(0X54,offy&0XFF);		//设置offy的低八位
+	temp=(vsize>>1)&0X80;
+	temp|=(offy>>4)&0X70;
+	temp|=(hsize>>5)&0X08;
+	temp|=(offx>>8)&0X07;
+	SCCB_WR_Reg(0X55,temp);				//设置H_SIZE/V_SIZE/OFFX,OFFY的高位
+	SCCB_WR_Reg(0X57,(hsize>>2)&0X80);	//设置H_SIZE/V_SIZE/OFFX,OFFY的高位
+	SCCB_WR_Reg(0XE0,0X00);
+	return 0;
+}
+
+
+
+
 /**
   * @brief  配置OV2640为UXGA模式，并设置输出图像大小
   * @param  None
@@ -147,6 +251,7 @@ void OV2640_UXGAConfig(void)
 	/*进行三次寄存器写入，确保配置写入正常
 	(在使用摄像头长排线时，IIC数据线干扰较大，必须多次写入来保证正常)*/
   /* 写入寄存器配置 */
+#if 1
   for(i=0; i<(sizeof(OV2640_UXGA)/2); i++)
   {
     SCCB_WR_Reg(OV2640_UXGA[i][0], OV2640_UXGA[i][1]);
@@ -164,10 +269,34 @@ void OV2640_UXGAConfig(void)
     SCCB_WR_Reg(OV2640_UXGA[i][0], OV2640_UXGA[i][1]);
 
   }
+#else
+  for(i=0; i<(sizeof(OV2640_QQVGA)/2); i++)
+  {
+    SCCB_WR_Reg(OV2640_QQVGA[i][0], OV2640_QQVGA[i][1]);
+
+  }
+	  /* Initialize OV2640 */
+  for(i=0; i<(sizeof(OV2640_QQVGA)/2); i++)
+  {
+    SCCB_WR_Reg(OV2640_QQVGA[i][0], OV2640_QQVGA[i][1]);
+
+  }
+	  /* Initialize OV2640 */
+  for(i=0; i<(sizeof(OV2640_QQVGA)/2); i++)
+  {
+    SCCB_WR_Reg(OV2640_QQVGA[i][0], OV2640_QQVGA[i][1]);
+
+  }
+
+#endif
 
 
+ // 注释掉的这三个函数未测试
+//  OV2640_ImageSize_Set(img_width,img_height);
+//  OV2640_ImageWin_Set(0,0,img_width,img_height);
+//  OV2640_Window_Set(0,0,img_width,img_height);
 	/*设置输出的图像大小*/
-	OV2640_OutSize_Set(img_width,img_height);   
+  OV2640_OutSize_Set(img_width,img_height);   
 }
 
 
