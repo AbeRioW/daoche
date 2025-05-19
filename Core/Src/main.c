@@ -27,18 +27,13 @@
 /* USER CODE BEGIN Includes */
 #include "LCD.h"
 #include "ov2640.h"
-#include "string.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
 
 // 定义常用颜色
-#define COLOR_RED     0xF800
-#define COLOR_GREEN   0x07E0
-#define COLOR_BLUE    0x001F
-#define COLOR_WHITE   0xFFFF
-#define COLOR_BLACK   0x0000
+
 /* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/
@@ -105,14 +100,12 @@ int main(void)
 //SysTick_Init();
     // 初始化LCD
     LCD_Init();
-		LCD_ShowString(0,0,12,"123456",0);
-//		memset(image_buffer,0xbb,QVGA_WIDTH * QVGA_HEIGHT*2);
-//		while(ov2640_init());
-//		// OV2640_SetResolution(QVGA_WIDTH, QVGA_HEIGHT);
-//  //  OV2640_SetImageFormat(IMAGE_FORMAT_RGB565);
+		while(ov2640_init());
+		 OV2640_SetResolution(QVGA_WIDTH, QVGA_HEIGHT);
+    OV2640_SetImageFormat(IMAGE_FORMAT_RGB565);
 
-//    // 开始捕获图像
-//    OV2640_StartCapture();		
+    // 开始捕获图像
+    OV2640_StartCapture();		
         // 开始连续捕获
 //    // 填充屏幕颜色
 //    LCD_Fill(COLOR_RED);

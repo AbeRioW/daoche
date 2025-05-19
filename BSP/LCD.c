@@ -1,6 +1,6 @@
 #include "LCD.h"
 
-uint16_t POINT_COLOR = 0x0000,BACK_COLOR = 0xFFFF;  
+uint16_t POINT_COLOR = 0x0000,BACK_COLOR = COLOR_RED;  
 
 //写命令
 void LCD_WriteCommand(uint8_t cmd) {
@@ -182,27 +182,27 @@ void ILI9341_DrawImage(uint16_t x, uint16_t y, uint16_t w, uint16_t h, uint8_t *
     HAL_GPIO_WritePin(LCD_DC_GPIO_Port, LCD_DC_Pin, GPIO_PIN_SET); // 数据模式
     HAL_GPIO_WritePin(SPI_CS_GPIO_Port, SPI_CS_Pin, GPIO_PIN_RESET); // 选中LCD
     
-    uint32_t size = w * h*2 ; // RGB565每个像素2字节
-    HAL_SPI_Transmit(&hspi3,img, size, 0xffff);
+    uint32_t size = w * h * 2; // RGB565每个像素2字节
+    HAL_SPI_Transmit(&hspi3,img, size, 1000);
     
     HAL_GPIO_WritePin(SPI_CS_GPIO_Port, SPI_CS_Pin, GPIO_PIN_SET); // 取消选中LCD
 }
 
-//#define SIZE 180
-//uint8_t checkerboard[SIZE * SIZE * 2];
+#define SIZE 64
+uint8_t checkerboard[SIZE * SIZE * 2];
 
-//void createCheckerboard() {
-//    for(int y = 0; y < SIZE; y++) {
-//        for(int x = 0; x < SIZE; x++) {
-//            uint16_t color = ((x / 8 + y / 8) % 2) ? 0xFFFF : 0x0000; // 黑白交替
-//            int index = (y * SIZE + x) * 2;
-//            checkerboard[index] = color >> 8;
-//            checkerboard[index+1] = color & 0xFF;
-//        }
-//    }
-//		
-//		ILI9341_DrawImage(0,0,SIZE,SIZE,checkerboard);
-//}
+void createCheckerboard() {
+    for(int y = 0; y < SIZE; y++) {
+        for(int x = 0; x < SIZE; x++) {
+            uint16_t color = ((x / 8 + y / 8) % 2) ? 0xFFFF : 0x0000; // 黑白交替
+            int index = (y * SIZE + x) * 2;
+            checkerboard[index] = color >> 8;
+            checkerboard[index+1] = color & 0xFF;
+        }
+    }
+		
+		ILI9341_DrawImage(50,50,SIZE,SIZE,checkerboard);
+}
 
 // 绘制像素点
 void ILI9341_DrawPixel(uint16_t x, uint16_t y, uint16_t color)
@@ -266,4 +266,3 @@ void LCD_ShowString(uint16_t x,uint16_t y,uint8_t size,uint8_t *p,uint8_t mode)
         p++;
     }  
 } 
-
