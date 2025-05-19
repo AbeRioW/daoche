@@ -45,7 +45,7 @@ void MX_DCMI_Init(void)
   hdcmi.Init.HSPolarity = DCMI_HSPOLARITY_LOW;
   hdcmi.Init.CaptureRate = DCMI_CR_ALL_FRAME;
   hdcmi.Init.ExtendedDataMode = DCMI_EXTEND_DATA_8B;
-  hdcmi.Init.JPEGMode = DCMI_JPEG_DISABLE;
+  hdcmi.Init.JPEGMode = DCMI_JPEG_ENABLE;
   if (HAL_DCMI_Init(&hdcmi) != HAL_OK)
   {
     Error_Handler();
@@ -120,9 +120,9 @@ void HAL_DCMI_MspInit(DCMI_HandleTypeDef* dcmiHandle)
     hdma_dcmi.Init.Direction = DMA_PERIPH_TO_MEMORY;
     hdma_dcmi.Init.PeriphInc = DMA_PINC_DISABLE;
     hdma_dcmi.Init.MemInc = DMA_MINC_ENABLE;
-    hdma_dcmi.Init.PeriphDataAlignment = DMA_PDATAALIGN_WORD;
+    hdma_dcmi.Init.PeriphDataAlignment = DMA_PDATAALIGN_HALFWORD;
     hdma_dcmi.Init.MemDataAlignment = DMA_MDATAALIGN_HALFWORD;
-    hdma_dcmi.Init.Mode = DMA_CIRCULAR;
+    hdma_dcmi.Init.Mode = DMA_NORMAL;
     hdma_dcmi.Init.Priority = DMA_PRIORITY_HIGH;
     hdma_dcmi.Init.FIFOMode = DMA_FIFOMODE_ENABLE;
     hdma_dcmi.Init.FIFOThreshold = DMA_FIFO_THRESHOLD_FULL;
@@ -191,7 +191,14 @@ void HAL_DCMI_MspDeInit(DCMI_HandleTypeDef* dcmiHandle)
 // DCMI֡�жϻص�
 void HAL_DCMI_FrameEventCallback(DCMI_HandleTypeDef *hdcmi)
 {
-   //ILI9341_DrawImage(0, 0, QVGA_WIDTH, QVGA_HEIGHT, image_buffer);
-	createCheckerboard();
+	 if(hdcmi->Instance==DCMI)
+	 {
+		     OV2640_StopCapture();
+			  ILI9341_DrawImage(0, 0, QVGA_WIDTH, QVGA_HEIGHT, image_buffer);
+		 OV2640_StartCapture();
+		// createCheckerboard();
+	 }
+
+	 //createCheckerboard();
 }
 /* USER CODE END 1 */

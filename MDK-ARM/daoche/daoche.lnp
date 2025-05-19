@@ -27,6 +27,7 @@
 "daoche\lcd.o"
 "daoche\sccb.o"
 "daoche\ov2640.o"
+"daoche\font.o"
 --strict --scatter "daoche\daoche.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

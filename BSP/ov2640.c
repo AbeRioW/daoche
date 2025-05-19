@@ -112,7 +112,7 @@ uint8_t ov2640_init(void)
 #else
 
 // 全局变量
-uint8_t image_buffer[QVGA_WIDTH * QVGA_HEIGHT]; // QVGA RGB565图像缓冲区
+uint8_t image_buffer[QVGA_WIDTH * QVGA_HEIGHT*2]; // QVGA RGB565图像缓冲区
 
 // 写寄存器序列
 static void OV2640_WriteRegList(const uint8_t reglist[][2], uint16_t size)
@@ -128,9 +128,9 @@ uint8_t ov2640_init(void)
 {
 		uint16_t reg,i;
 	OV2640_PWDN = 0; //POWER ON
-	HAL_Delay(10);
+	HAL_Delay(20);
 	OV2640_RST = 0; //复位OV2640
-	HAL_Delay(10);
+	HAL_Delay(20);
 	OV2640_RST = 1;						   //结束复位
 	
 			SCCB_SDA_OUT();
@@ -158,108 +158,54 @@ uint8_t ov2640_init(void)
 
 	    // 初始化寄存器序列
     static const uint8_t ov2640_init_reg_tbl[][2] = {
-        {0xFF, 0x01},
-        {0x12, 0x80}, // 复位所有寄存器
-        {0xFF, 0x00},
-        {0x2C, 0xFF},
-        {0x2E, 0xDF},
-        {0xFF, 0x01},
-        {0x3C, 0x32},
-        {0x11, 0x00},
-        {0x09, 0x02},
-        {0x04, 0x28},
-        {0x13, 0xE5},
-        {0x14, 0x48},
-        {0x2C, 0x0C},
-        {0x33, 0x78},
-        {0x3A, 0x33},
-        {0x3B, 0xFb},
-        {0x3E, 0x00},
-        {0x43, 0x11},
-        {0x16, 0x10},
-        {0x39, 0x02},
-        {0x35, 0x88},
-        {0x22, 0x0A},
-        {0x37, 0x40},
-        {0x23, 0x00},
-        {0x34, 0xA0},
-        {0x06, 0x02},
-        {0x06, 0x88},
-        {0x07, 0xC0},
-        {0x0D, 0xB7},
-        {0x0E, 0x01},
-        {0x4C, 0x00},
-        {0x4A, 0x81},
-        {0x21, 0x99},
-        {0x24, 0x40},
-        {0x25, 0x38},
-        {0x26, 0x82},
-        {0x5C, 0x00},
-        {0x63, 0x00},
-        {0x46, 0x22},
-        {0x0C, 0x3A},
-        {0x5D, 0x55},
-        {0x5E, 0x7D},
-        {0x5F, 0x7D},
-        {0x60, 0x55},
-        {0x61, 0x70},
-        {0x62, 0x80},
-        {0x7C, 0x05},
-        {0x20, 0x80},
-        {0x28, 0x30},
-        {0x6C, 0x00},
-        {0x6D, 0x80},
-        {0x6E, 0x00},
-        {0x70, 0x02},
-        {0x71, 0x94},
-        {0x73, 0xC1},
-        {0x3D, 0x34},
-        {0x5A, 0x57},
-        {0x12, 0x00},
-        {0x11, 0x00},
-        {0x17, 0x11},
-        {0x18, 0x75},
-        {0x19, 0x01},
-        {0x1A, 0x97},
-        {0x32, 0x36},
-        {0x03, 0x0F},
-        {0x37, 0x40},
-        {0x4F, 0xBB},
-        {0x50, 0x9C},
-        {0x5A, 0x57},
-        {0x6D, 0x80},
-        {0x6D, 0x38},
-        {0x39, 0x02},
-        {0x35, 0x88},
-        {0x22, 0x0A},
-        {0x37, 0x40},
-        {0x34, 0xA0},
-        {0x06, 0x02},
-        {0x0D, 0xB7},
-        {0x0E, 0x01},
-        {0xFF, 0x00},
-        {0xE0, 0x04},
-        {0xC0, 0xC8},
-        {0xC1, 0x96},
-        {0x86, 0x3D},
-        {0x50, 0x89},
-        {0x51, 0x90},
-        {0x52, 0x2C},
-        {0x53, 0x00},
-        {0x54, 0x00},
-        {0x55, 0x88},
-        {0x57, 0x00},
-        {0x5A, 0xA0},
-        {0x5B, 0x78},
-        {0x5C, 0x00},
-        {0xD3, 0x04},
-        {0xE0, 0x00}
+    // 切换到 Bank 0
+    {0xFF, 0x00},
+    
+    // 基本配置
+    {0x12, 0x14},  // 输出格式: RGB565 (0x14)
+    {0x3C, 0x30},  // 缩放控制: 启用缩放
+    
+    // 水平和垂直尺寸设置 (原始图像区域)
+    {0x17, 0x11},  // HSTART[7:0] = 17 (水平起始位置)
+    {0x18, 0x3F},  // HSTOP[7:0] = 63 (水平结束位置)
+    {0x19, 0x01},  // VSTART[7:0] = 1 (垂直起始位置)
+    {0x1A, 0x3F},  // VSTOP[7:0] = 63 (垂直结束位置)
+    
+    // 输出窗口大小 (160×120)
+    {0x32, 0x28},  // HREF[9:2] = 40 (水平参考)
+    {0x1E, 0x07},  // HOutSize[7:0] = 7 (水平输出尺寸低 8 位)
+    {0x03, 0x05},  // HOutSize[11:8] = 5 (水平输出尺寸高 4 位)
+                    // 总 HOutSize = 5*256 + 7 = 1287 (对应 160 像素)
+    
+    {0x1F, 0x04},  // VOutSize[7:0] = 4 (垂直输出尺寸低 8 位)
+    {0x04, 0x09},  // VOutSize[11:8] = 9 (垂直输出尺寸高 4 位)
+                    // 总 VOutSize = 9*256 + 4 = 2308 (对应 120 像素)
+    
+    // RGB565 格式配置
+    {0x33, 0x02},  // 像素顺序: RGB
+    {0x3A, 0x04},  // RGB 输出控制: 565 格式
+    
+    // 同步信号配置
+    {0x07, 0xC0},  // 同步信号极性: HSYNC/VSYNC 低电平有效
+    
+    // 亮度/对比度/饱和度
+    {0x50, 0x80},  // 亮度: 中间值
+    {0x51, 0x80},  // 对比度: 中间值
+    {0x52, 0x20},  // 饱和度: 默认值
+    {0x53, 0x00},  // 色调: 默认值
+    
+    // 帧率控制 (可选)
+    {0x11, 0x00},  // PLL 配置: 使用内部 24MHz 晶振
+    {0x0C, 0x00},  // 帧率控制: 无限制 (根据时钟)
+    
+    // 完成配置
+    {0xFF, 0x00},  // 返回 Bank 0
     };
     OV2640_WriteRegList(ov2640_init_reg_tbl, sizeof(ov2640_init_reg_tbl)/2);
 
 		
 		    // 默认设置为RGB565模式
-    OV2640_SetImageFormat(IMAGE_FORMAT_RGB565);
+   // OV2640_SetImageFormat(IMAGE_FORMAT_RGB565);
 	return 0;
 }
 
@@ -372,7 +318,7 @@ void OV2640_SetImageFormat(uint8_t format)
 void OV2640_StartCapture(void)
 {
     // 配置DCMI DMA传输
-    HAL_DCMI_Start_DMA(&hdcmi, DCMI_MODE_CONTINUOUS, (uint32_t)image_buffer, QVGA_WIDTH * QVGA_HEIGHT);
+    HAL_DCMI_Start_DMA(&hdcmi, DCMI_MODE_CONTINUOUS, (uint32_t)image_buffer, QVGA_WIDTH * QVGA_HEIGHT*2);
 }
 // 停止捕获
 void OV2640_StopCapture(void)

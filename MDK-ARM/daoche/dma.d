@@ -8,7 +8,7 @@ daoche\dma.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h
 daoche\dma.o: ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h
 daoche\dma.o: ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h
 daoche\dma.o: ../Drivers/CMSIS/Include/core_cm4.h
-daoche\dma.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+daoche\dma.o: D:\programFiles\KEIL5\ARM\ARMCC\Bin\..\include\stdint.h
 daoche\dma.o: ../Drivers/CMSIS/Include/cmsis_version.h
 daoche\dma.o: ../Drivers/CMSIS/Include/cmsis_compiler.h
 daoche\dma.o: ../Drivers/CMSIS/Include/cmsis_armcc.h
@@ -16,7 +16,7 @@ daoche\dma.o: ../Drivers/CMSIS/Include/mpu_armv7.h
 daoche\dma.o: ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h
 daoche\dma.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h
 daoche\dma.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h
-daoche\dma.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+daoche\dma.o: D:\programFiles\KEIL5\ARM\ARMCC\Bin\..\include\stddef.h
 daoche\dma.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h
 daoche\dma.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h
 daoche\dma.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio_ex.h

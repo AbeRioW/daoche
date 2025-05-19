@@ -102,13 +102,13 @@
 // 分辨率定义
 #define QQVGA_WIDTH         160
 #define QQVGA_HEIGHT        120
-#define QVGA_WIDTH          320
-#define QVGA_HEIGHT         240
+#define QVGA_WIDTH          160
+#define QVGA_HEIGHT         120
 
 uint8_t ov2640_init(void);
 //void OV2640_JPEG_Mode(void);
 //void OV2640_RGB565_Mode(void);
-extern uint8_t image_buffer[QVGA_WIDTH * QVGA_HEIGHT]; 
+extern uint8_t image_buffer[QVGA_WIDTH * QVGA_HEIGHT*2]; 
 
 
 //uint8_t OV2640_OutSize_Set(uint16_t width, uint16_t height);
