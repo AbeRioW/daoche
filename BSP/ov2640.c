@@ -5,7 +5,7 @@
 uint8_t image_buffer[QVGA_WIDTH * QVGA_HEIGHT]; // QVGA RGB565图像缓冲区
 
 // 写寄存器序列
-static void OV2640_WriteRegList(const uint8_t reglist[][2], uint16_t size)
+void OV2640_WriteRegList(const uint8_t reglist[][2], uint16_t size)
 {
     for(uint16_t i = 0; i < size; i++)
     {
@@ -289,14 +289,15 @@ void OV2640_UXGAConfig(void)
   }
 
 #endif
-
-
+	//	OV2640_LightMode(0);
  // 注释掉的这三个函数未测试
 //  OV2640_ImageSize_Set(img_width,img_height);
 //  OV2640_ImageWin_Set(0,0,img_width,img_height);
 //  OV2640_Window_Set(0,0,img_width,img_height);
 	/*设置输出的图像大小*/
-  OV2640_OutSize_Set(img_width,img_height);   
+  OV2640_OutSize_Set(img_width,img_height); 
+
+
 }
 
 

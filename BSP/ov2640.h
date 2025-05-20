@@ -134,6 +134,8 @@ void OV2640_JPEGConfig(ImageFormat_TypeDef ImageFormat);
 void OV2640_LightMode(uint8_t mode);
 void OV2640_SpecialEffects(uint8_t mode);
 
+void OV2640_WriteRegList(const uint8_t reglist[][2], uint16_t size);
+
 // 停止捕获
 void OV2640_StopCapture(void);
 #endif

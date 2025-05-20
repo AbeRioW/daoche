@@ -101,12 +101,12 @@ int main(void)
 //SysTick_Init();
     // 初始化LCD
     LCD_Init();
+		 LCD_Fill(COLOR_BLACK);
 		while(ov2640_init());
 		OV2640_UXGAConfig();
-		//OV2640_QQVGAConfig();
-		//memset(image_buffer,0xbb,320*240);
 
-		//OV2640_JPEGConfig(JPEG_160x120);
+
+
 
     // 开始捕获图像
     OV2640_StartCapture();		
