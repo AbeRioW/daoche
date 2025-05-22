@@ -40,3 +40,8 @@ daoche\sr04.o: ../Core/Inc/gpio.h
 daoche\sr04.o: D:\programFiles\KEIL5\ARM\ARMCC\Bin\..\include\stdbool.h
 daoche\sr04.o: ..\BSP\LCD.h
 daoche\sr04.o: ../Core/Inc/spi.h
+daoche\sr04.o: ..\BSP\ov2640.h
+daoche\sr04.o: ..\BSP\sccb.h
+daoche\sr04.o: ../Core/Inc/dcmi.h
+daoche\sr04.o: ../Core/Inc/dcmi.h
+daoche\sr04.o: ../BSP/ov2640.h

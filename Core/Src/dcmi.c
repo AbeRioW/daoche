@@ -138,7 +138,7 @@ void HAL_DCMI_MspInit(DCMI_HandleTypeDef* dcmiHandle)
     __HAL_LINKDMA(dcmiHandle,DMA_Handle,hdma_dcmi);
 
     /* DCMI interrupt Init */
-    HAL_NVIC_SetPriority(DCMI_IRQn, 2, 0);
+    HAL_NVIC_SetPriority(DCMI_IRQn, 1, 0);
     HAL_NVIC_EnableIRQ(DCMI_IRQn);
   /* USER CODE BEGIN DCMI_MspInit 1 */
 
@@ -193,17 +193,17 @@ void HAL_DCMI_MspDeInit(DCMI_HandleTypeDef* dcmiHandle)
 // DCMI֡�жϻص�
 void HAL_DCMI_FrameEventCallback(DCMI_HandleTypeDef *hdcmi)
 {
-//		 char show_data[20];
-//	 static int i=0;
+		 char show_data[20];
+	 static int i=0;
 		 if(hdcmi->Instance==DCMI)
 	 {
    //ILI9341_DrawImage(0, 0, QVGA_WIDTH, QVGA_HEIGHT, image_buffer);
 		 
 		 get_image = true;
-//		 		   ILI9341_DrawImage(0, 0, QVGA_WIDTH, QVGA_HEIGHT, image_buffer);
-//			 i++;
-//		 sprintf(show_data,"Capture:%d",i);
-//		 LCD_ShowString(0,180,16,show_data,0);	
+		 		   ILI9341_DrawImage(0, 0, QVGA_WIDTH, QVGA_HEIGHT, image_buffer);
+			 i++;
+		 sprintf(show_data,"Capture:%d",i);
+		 LCD_ShowString(0,180,16,show_data,0);	
 		 
 		         // 清除帧捕获中断标志
 //        __HAL_DCMI_CLEAR_FLAG(hdcmi, DCMI_FLAG_FRAME);

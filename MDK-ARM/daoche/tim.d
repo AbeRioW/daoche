@@ -34,3 +34,14 @@ daoche\tim.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h
 daoche\tim.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h
 daoche\tim.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h
 daoche\tim.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
+daoche\tim.o: ../BSP/sr04.h
+daoche\tim.o: D:\programFiles\KEIL5\ARM\ARMCC\Bin\..\include\stdio.h
+daoche\tim.o: ../Core/Inc/gpio.h
+daoche\tim.o: D:\programFiles\KEIL5\ARM\ARMCC\Bin\..\include\stdbool.h
+daoche\tim.o: ../BSP/ov2640.h
+daoche\tim.o: ../BSP/sccb.h
+daoche\tim.o: ../Core/Inc/dcmi.h
+daoche\tim.o: ../Core/Inc/dcmi.h
+daoche\tim.o: ../BSP/LCD.h
+daoche\tim.o: ../Core/Inc/spi.h
+daoche\tim.o: ../BSP/ov2640.h

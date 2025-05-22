@@ -37,6 +37,7 @@ extern "C" {
 extern DCMI_HandleTypeDef hdcmi;
 
 /* USER CODE BEGIN Private defines */
+extern DMA_HandleTypeDef hdma_dcmi;
 extern bool get_image;
 /* USER CODE END Private defines */
 
