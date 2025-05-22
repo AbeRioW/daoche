@@ -35,6 +35,7 @@ daoche\dcmi.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h
 daoche\dcmi.o: ../Core/Inc/dcmi.h
 daoche\dcmi.o: ../BSP/LCD.h
 daoche\dcmi.o: ../Core/Inc/gpio.h
+daoche\dcmi.o: D:\programFiles\KEIL5\ARM\ARMCC\Bin\..\include\stdbool.h
 daoche\dcmi.o: ../Core/Inc/spi.h
 daoche\dcmi.o: ../BSP/ov2640.h
 daoche\dcmi.o: ../BSP/sccb.h

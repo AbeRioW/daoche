@@ -35,6 +35,7 @@ daoche\main.o: ../Core/Inc/dcmi.h
 daoche\main.o: ../Core/Inc/dcmi.h
 daoche\main.o: ../BSP/LCD.h
 daoche\main.o: ../Core/Inc/gpio.h
+daoche\main.o: D:\programFiles\KEIL5\ARM\ARMCC\Bin\..\include\stdbool.h
 daoche\main.o: ../Core/Inc/spi.h
 daoche\main.o: ../BSP/ov2640.h
 daoche\main.o: ../BSP/sccb.h

@@ -32,3 +32,11 @@ daoche\gpio.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h
 daoche\gpio.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h
 daoche\gpio.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h
 daoche\gpio.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h
+daoche\gpio.o: D:\programFiles\KEIL5\ARM\ARMCC\Bin\..\include\stdbool.h
+daoche\gpio.o: ../BSP/ov2640.h
+daoche\gpio.o: ../BSP/sccb.h
+daoche\gpio.o: ../Core/Inc/dcmi.h
+daoche\gpio.o: ../Core/Inc/dcmi.h
+daoche\gpio.o: ../BSP/LCD.h
+daoche\gpio.o: ../Core/Inc/spi.h
+daoche\gpio.o: ../BSP/ov2640.h

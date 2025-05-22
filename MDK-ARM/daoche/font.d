@@ -33,4 +33,5 @@ daoche\font.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h
 daoche\font.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h
 daoche\font.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h
 daoche\font.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h
+daoche\font.o: D:\programFiles\KEIL5\ARM\ARMCC\Bin\..\include\stdbool.h
 daoche\font.o: ../Core/Inc/spi.h

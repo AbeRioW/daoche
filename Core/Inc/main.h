@@ -67,6 +67,9 @@ void Error_Handler(void);
 #define LCD_DC_GPIO_Port GPIOD
 #define LCD_RST_Pin GPIO_PIN_2
 #define LCD_RST_GPIO_Port GPIOD
+#define KEY1_Pin GPIO_PIN_6
+#define KEY1_GPIO_Port GPIOD
+#define KEY1_EXTI_IRQn EXTI9_5_IRQn
 #define OV2640_PWDN_Pin GPIO_PIN_9
 #define OV2640_PWDN_GPIO_Port GPIOG
 #define OV2640_RST_Pin GPIO_PIN_15

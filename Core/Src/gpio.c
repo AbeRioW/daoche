@@ -22,7 +22,10 @@
 #include "gpio.h"
 
 /* USER CODE BEGIN 0 */
+#include "ov2640.h"
+enum BUTTON button =UNPRESSED;
 
+bool ov_status = false;
 /* USER CODE END 0 */
 
 /*----------------------------------------------------------------------------*/
@@ -69,6 +72,12 @@ void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
   HAL_GPIO_Init(GPIOD, &GPIO_InitStruct);
 
+  /*Configure GPIO pin : KEY1_Pin */
+  GPIO_InitStruct.Pin = KEY1_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING;
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
+  HAL_GPIO_Init(KEY1_GPIO_Port, &GPIO_InitStruct);
+
   /*Configure GPIO pins : OV2640_PWDN_Pin OV2640_RST_Pin */
   GPIO_InitStruct.Pin = OV2640_PWDN_Pin|OV2640_RST_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
@@ -83,8 +92,37 @@ void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
+  /* EXTI interrupt init*/
+  HAL_NVIC_SetPriority(EXTI9_5_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(EXTI9_5_IRQn);
+
 }
 
 /* USER CODE BEGIN 2 */
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
+{
 
+		if(GPIO_Pin==KEY1_Pin)
+		{
+			  ov_status=!ov_status;
+			  if(ov_status)
+				{
+					 OV2640_StartCapture();
+				}
+				else
+				{
+						OV2640_StopCapture();
+				}
+		}
+		
+//		if(GPIO_Pin==KEY2Pin)
+//		{
+//				button = RIGHT_BUTTON;
+//		}
+//		
+//		if(GPIO_Pin==KEY3Pin)
+//		{
+//				button  = ENSURE_BUTTON;
+//		}
+}
 /* USER CODE END 2 */
