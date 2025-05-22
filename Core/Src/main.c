@@ -47,7 +47,7 @@ uint8_t dis_50[13]={0xFD,0x00,0x0A,0x01,0x01,0xCE,0xE5,0xCA,0xAE,0xC0,0xE5,0xC3,
 
 /* Private macro -------------------------------------------------------------*/
 /* USER CODE BEGIN PM */
-
+uint8_t dis_band = 30;
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
@@ -76,9 +76,10 @@ int main(void)
 {
 
   /* USER CODE BEGIN 1 */
-		char show_image[20];
+	 		char show_image[20];
 	  int i_count=0;
 	 uint32_t last_ultrasonic_time = 0;
+	bool stop_timer2 = false;
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -103,30 +104,21 @@ int main(void)
   MX_SPI3_Init();
   MX_DCMI_Init();
   MX_TIM1_Init();
-  MX_TIM2_Init();
+ // MX_TIM2_Init();
   MX_TIM3_Init();
   MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
   // 初始化LCD
   LCD_Init();
 	LCD_Fill(COLOR_BLACK);
-//	while(ov2640_init());
-//	OV2640_UXGAConfig();
-
+	while(ov2640_init());
+	OV2640_UXGAConfig();
 
 
 
     // 开始捕获图像
-//    OV2640_StartCapture();		
-        // 开始连续捕获
-//    // 填充屏幕颜色
-//    LCD_Fill(COLOR_RED);
-//    HAL_Delay(1000);
-//    LCD_Fill(COLOR_GREEN);
-//    HAL_Delay(1000);
-//    LCD_Fill(COLOR_BLUE);
-//    HAL_Delay(1000);
-		HAL_UART_Transmit(&huart1,dis_50,13,0xffff);
+		OV2640_StartCapture();		
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -134,9 +126,45 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-
+  
     /* USER CODE BEGIN 3 */
-		
+//		if(button==ENSURE_BUTTON)
+//		{
+//			 HAL_Delay(200);
+//			 button=UNPRESSED;
+//			 stop_timer2 = !stop_timer2;
+//			if(stop_timer2)
+//			{
+//					  HAL_TIM_Base_Stop_IT(&htim2);
+//			}
+//			else
+//			{
+//					  HAL_TIM_Base_Start_IT(&htim2);
+//			}
+//		}
+//		
+//		if(button==LEFT_BUTTON)
+//		{
+//							 HAL_Delay(200);
+//			 button=UNPRESSED;
+//			dis_band-=10;
+//			if(dis_band<10)
+//				dis_band=10;
+//			
+//				sprintf(show_image,"dia_band:%d",dis_band);
+//				LCD_ShowString(0,200,16,(uint8_t*)show_image,0);	
+//		}
+//		
+//		if(button==RIGHT_BUTTON)
+//		{
+//			 HAL_Delay(200);
+//			 button=UNPRESSED;	
+//			dis_band+=10;
+//			if(dis_band>40)
+//				dis_band=40;	
+//				sprintf(show_image,"dia_band:%d",dis_band);
+//				LCD_ShowString(0,200,16,(uint8_t*)show_image,0);				
+//		}
   }
   /* USER CODE END 3 */
 }

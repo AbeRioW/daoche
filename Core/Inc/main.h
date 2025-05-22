@@ -40,7 +40,7 @@ extern "C" {
 
 /* Exported types ------------------------------------------------------------*/
 /* USER CODE BEGIN ET */
-
+extern uint8_t dis_band;
 /* USER CODE END ET */
 
 /* Exported constants --------------------------------------------------------*/
@@ -61,8 +61,16 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
+#define BEEP_Pin GPIO_PIN_13
+#define BEEP_GPIO_Port GPIOC
 #define Trig_Pin GPIO_PIN_10
 #define Trig_GPIO_Port GPIOE
+#define KEY2_Pin GPIO_PIN_7
+#define KEY2_GPIO_Port GPIOG
+#define KEY2_EXTI_IRQn EXTI9_5_IRQn
+#define KEY3_Pin GPIO_PIN_8
+#define KEY3_GPIO_Port GPIOG
+#define KEY3_EXTI_IRQn EXTI9_5_IRQn
 #define SPI_CS_Pin GPIO_PIN_0
 #define SPI_CS_GPIO_Port GPIOD
 #define LCD_DC_Pin GPIO_PIN_1

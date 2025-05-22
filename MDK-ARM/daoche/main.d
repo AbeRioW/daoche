@@ -7,7 +7,7 @@ daoche\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h
 daoche\main.o: ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h
 daoche\main.o: ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h
 daoche\main.o: ../Drivers/CMSIS/Include/core_cm4.h
-daoche\main.o: D:\programFiles\KEIL5\ARM\ARMCC\Bin\..\include\stdint.h
+daoche\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 daoche\main.o: ../Drivers/CMSIS/Include/cmsis_version.h
 daoche\main.o: ../Drivers/CMSIS/Include/cmsis_compiler.h
 daoche\main.o: ../Drivers/CMSIS/Include/cmsis_armcc.h
@@ -15,7 +15,7 @@ daoche\main.o: ../Drivers/CMSIS/Include/mpu_armv7.h
 daoche\main.o: ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h
 daoche\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h
 daoche\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h
-daoche\main.o: D:\programFiles\KEIL5\ARM\ARMCC\Bin\..\include\stddef.h
+daoche\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 daoche\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h
 daoche\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h
 daoche\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio_ex.h
@@ -38,12 +38,12 @@ daoche\main.o: ../Core/Inc/dcmi.h
 daoche\main.o: ../Core/Inc/dcmi.h
 daoche\main.o: ../BSP/LCD.h
 daoche\main.o: ../Core/Inc/gpio.h
-daoche\main.o: D:\programFiles\KEIL5\ARM\ARMCC\Bin\..\include\stdbool.h
+daoche\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
 daoche\main.o: ../Core/Inc/spi.h
 daoche\main.o: ../BSP/ov2640.h
 daoche\main.o: ../BSP/sccb.h
 daoche\main.o: ../Core/Inc/dma.h
 daoche\main.o: ../Core/Inc/tim.h
 daoche\main.o: ../Core/Inc/usart.h
-daoche\main.o: D:\programFiles\KEIL5\ARM\ARMCC\Bin\..\include\stdio.h
+daoche\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 daoche\main.o: ../BSP/sr04.h

@@ -29,7 +29,7 @@ extern "C" {
 #include "main.h"
 
 /* USER CODE BEGIN Includes */
-
+#include "stdbool.h"
 /* USER CODE END Includes */
 
 extern TIM_HandleTypeDef htim1;
@@ -39,7 +39,7 @@ extern TIM_HandleTypeDef htim2;
 extern TIM_HandleTypeDef htim3;
 
 /* USER CODE BEGIN Private defines */
-
+extern bool timer2_go;
 /* USER CODE END Private defines */
 
 void MX_TIM1_Init(void);

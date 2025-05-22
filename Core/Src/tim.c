@@ -23,6 +23,7 @@
 /* USER CODE BEGIN 0 */
 #include "sr04.h"
 #include "ov2640.h"
+bool timer2_go = false;
 /* USER CODE END 0 */
 
 TIM_HandleTypeDef htim1;
@@ -69,7 +70,7 @@ void MX_TIM1_Init(void)
     Error_Handler();
   }
   /* USER CODE BEGIN TIM1_Init 2 */
-
+  
   /* USER CODE END TIM1_Init 2 */
 
 }
@@ -110,7 +111,8 @@ void MX_TIM2_Init(void)
   }
   /* USER CODE BEGIN TIM2_Init 2 */
   /* ������ʱ���ж� */
-  //HAL_TIM_Base_Start_IT(&htim2);
+	timer2_go = true;
+  HAL_TIM_Base_Start_IT(&htim2);
   /* USER CODE END TIM2_Init 2 */
 
 }

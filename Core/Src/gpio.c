@@ -50,12 +50,15 @@ void MX_GPIO_Init(void)
 
   /* GPIO Ports Clock Enable */
   __HAL_RCC_GPIOE_CLK_ENABLE();
+  __HAL_RCC_GPIOC_CLK_ENABLE();
   __HAL_RCC_GPIOH_CLK_ENABLE();
   __HAL_RCC_GPIOA_CLK_ENABLE();
-  __HAL_RCC_GPIOC_CLK_ENABLE();
-  __HAL_RCC_GPIOD_CLK_ENABLE();
   __HAL_RCC_GPIOG_CLK_ENABLE();
+  __HAL_RCC_GPIOD_CLK_ENABLE();
   __HAL_RCC_GPIOB_CLK_ENABLE();
+
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(BEEP_GPIO_Port, BEEP_Pin, GPIO_PIN_SET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(Trig_GPIO_Port, Trig_Pin, GPIO_PIN_SET);
@@ -69,12 +72,25 @@ void MX_GPIO_Init(void)
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOB, OV2640_SCL_Pin|OV2640_SDA_Pin, GPIO_PIN_SET);
 
+  /*Configure GPIO pin : BEEP_Pin */
+  GPIO_InitStruct.Pin = BEEP_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(BEEP_GPIO_Port, &GPIO_InitStruct);
+
   /*Configure GPIO pin : Trig_Pin */
   GPIO_InitStruct.Pin = Trig_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_PULLUP;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
   HAL_GPIO_Init(Trig_GPIO_Port, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : KEY2_Pin KEY3_Pin */
+  GPIO_InitStruct.Pin = KEY2_Pin|KEY3_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING;
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
+  HAL_GPIO_Init(GPIOG, &GPIO_InitStruct);
 
   /*Configure GPIO pins : SPI_CS_Pin LCD_DC_Pin LCD_RST_Pin */
   GPIO_InitStruct.Pin = SPI_CS_Pin|LCD_DC_Pin|LCD_RST_Pin;
@@ -113,30 +129,20 @@ void MX_GPIO_Init(void)
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
 
-//		if(GPIO_Pin==KEY1_Pin)
-//		{
-//			  ov_status=!ov_status;
-//			  if(ov_status)
-//				{
-//					 //OV2640_StartCapture();
-//					HAL_TIM_Base_Stop_IT(&htim2);
-//				}
-//				else
-//				{
-//						//OV2640_StopCapture();
-//						HAL_TIM_Base_Start_IT(&htim2);
-//				}
+		if(GPIO_Pin==KEY1_Pin)
+		{
 
-//		}
+				button = LEFT_BUTTON;
+		}
 		
-//		if(GPIO_Pin==KEY2Pin)
-//		{
-//				button = RIGHT_BUTTON;
-//		}
-//		
-//		if(GPIO_Pin==KEY3Pin)
-//		{
-//				button  = ENSURE_BUTTON;
-//		}
+		if(GPIO_Pin==KEY2_Pin)
+		{
+				button = RIGHT_BUTTON;
+		}
+		
+		if(GPIO_Pin==KEY3_Pin)
+		{
+				button  = ENSURE_BUTTON;
+		}
 }
 /* USER CODE END 2 */
