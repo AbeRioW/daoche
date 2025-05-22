@@ -35,6 +35,7 @@ daoche\ov2640.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h
 daoche\ov2640.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h
 daoche\ov2640.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h
 daoche\ov2640.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
+daoche\ov2640.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
 daoche\ov2640.o: ../Core/Inc/dcmi.h
 daoche\ov2640.o: ../Core/Inc/dcmi.h
 daoche\ov2640.o: ../BSP/LCD.h

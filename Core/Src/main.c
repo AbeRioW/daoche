@@ -22,6 +22,7 @@
 #include "dma.h"
 #include "spi.h"
 #include "tim.h"
+#include "usart.h"
 #include "gpio.h"
 
 /* Private includes ----------------------------------------------------------*/
@@ -41,7 +42,7 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-
+uint8_t dis_50[13]={0xFD,0x00,0x0A,0x01,0x01,0xCE,0xE5,0xCA,0xAE,0xC0,0xE5,0xC3,0xD7}; 
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -103,18 +104,20 @@ int main(void)
   MX_DCMI_Init();
   MX_TIM1_Init();
   MX_TIM2_Init();
+  MX_TIM3_Init();
+  MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
   // 初始化LCD
   LCD_Init();
 	LCD_Fill(COLOR_BLACK);
-	while(ov2640_init());
-	OV2640_UXGAConfig();
+//	while(ov2640_init());
+//	OV2640_UXGAConfig();
 
 
 
 
     // 开始捕获图像
-    OV2640_StartCapture();		
+//    OV2640_StartCapture();		
         // 开始连续捕获
 //    // 填充屏幕颜色
 //    LCD_Fill(COLOR_RED);
@@ -123,7 +126,7 @@ int main(void)
 //    HAL_Delay(1000);
 //    LCD_Fill(COLOR_BLUE);
 //    HAL_Delay(1000);
-		
+		HAL_UART_Transmit(&huart1,dis_50,13,0xffff);
   /* USER CODE END 2 */
 
   /* Infinite loop */

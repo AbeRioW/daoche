@@ -26,12 +26,11 @@ void delay_SR_us(uint32_t us)
 /* 触发HC - SR04测量函数 */
 void sr04_trigger_measurement(void)
 {
-    /* 发送触发信号 */
+    /* 发送触发信号 高电平*/
     TRIG_H;
-    //delay_SR_us(30);
-    TRIG_L;
-			  __HAL_TIM_SET_CAPTUREPOLARITY(&htim1,TIM_CHANNEL_2,TIM_INPUTCHANNELPOLARITY_RISING);
-				HAL_TIM_IC_Start_IT(&htim1,TIM_CHANNEL_2);      //启动输入捕获
+	
+	  HAL_TIM_Base_Start_IT(&htim3);  //启动基本定时器3
+
 }
 
 void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef* htim)
@@ -55,7 +54,7 @@ void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef* htim)
                 // 在这里可以进行距离处理，例如显示距离
 								sprintf(long_dis,"%.2f",distant);
 								LCD_ShowString(0,220,16,(uint8_t*)long_dis,0);	
-							//OV2640_StartCapture();
+							 	HAL_TIM_IC_Stop_IT(&htim1,TIM_CHANNEL_2);                             //停止捕获
             }
             else
             {

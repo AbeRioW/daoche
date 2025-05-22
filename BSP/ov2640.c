@@ -60,7 +60,10 @@ void OV2640_StartCapture(void)
 void OV2640_StopCapture(void)
 {
     HAL_DCMI_Stop(&hdcmi);
-	  HAL_DMA_Abort_IT(&hdma_dcmi);
+//	  __HAL_DCMI_DISABLE_IT(&hdcmi, DCMI_IT_FRAME);
+//	
+//	  HAL_DMA_Abort_IT(&hdma_dcmi);
+//	   __HAL_DMA_DISABLE(&hdma_dcmi);
 }
 
 /**

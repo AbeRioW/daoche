@@ -23,6 +23,7 @@
 
 /* USER CODE BEGIN 0 */
 #include "ov2640.h"
+#include "tim.h"
 enum BUTTON button =UNPRESSED;
 
 bool ov_status = false;
@@ -103,7 +104,7 @@ void MX_GPIO_Init(void)
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
   /* EXTI interrupt init*/
-  HAL_NVIC_SetPriority(EXTI9_5_IRQn, 0, 0);
+  HAL_NVIC_SetPriority(EXTI9_5_IRQn, 6, 0);
   HAL_NVIC_EnableIRQ(EXTI9_5_IRQn);
 
 }
@@ -112,18 +113,21 @@ void MX_GPIO_Init(void)
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
 
-		if(GPIO_Pin==KEY1_Pin)
-		{
-			  ov_status=!ov_status;
-			  if(ov_status)
-				{
-					 OV2640_StartCapture();
-				}
-				else
-				{
-						OV2640_StopCapture();
-				}
-		}
+//		if(GPIO_Pin==KEY1_Pin)
+//		{
+//			  ov_status=!ov_status;
+//			  if(ov_status)
+//				{
+//					 //OV2640_StartCapture();
+//					HAL_TIM_Base_Stop_IT(&htim2);
+//				}
+//				else
+//				{
+//						//OV2640_StopCapture();
+//						HAL_TIM_Base_Start_IT(&htim2);
+//				}
+
+//		}
 		
 //		if(GPIO_Pin==KEY2Pin)
 //		{
