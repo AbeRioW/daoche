@@ -6,7 +6,7 @@
   <Header>### uVision Project, (C) Keil Software</Header>
 
   <PrjGuiSettings>
-    <LastAddFilePath>C:\Users\dell\Desktop\daoche-caea57707e6a8840907831c00ad8d1cbb62b43a0\daoche-caea57707e6a8840907831c00ad8d1cbb62b43a0\BSP</LastAddFilePath>
+    <LastAddFilePath>C:\Users\dell\Desktop\github\daoche\BSP</LastAddFilePath>
   </PrjGuiSettings>
 
   <ViewPool/>
@@ -101,17 +101,17 @@
         <yPos>-1</yPos>
       </MaxPosition>
       <NormalPosition>
-        <Top>119</Top>
-        <Left>-112</Left>
-        <Right>1806</Right>
-        <Bottom>1149</Bottom>
+        <Top>79</Top>
+        <Left>127</Left>
+        <Right>1604</Right>
+        <Bottom>993</Bottom>
       </NormalPosition>
     </WindowPosition>
     <MDIClientArea>
       <RegID>0</RegID>
       <MDITabState>
-        <Len>1111</Len>
-        <Data>0100000004000000010000000100000001000000010000000000000002000000000000000100000001000000000000002800000028000000010000000C000000010000000100000030433A5C55736572735C64656C6C5C4465736B746F705C6769746875625C64616F6368655C4253505C6F76323634302E6300000000086F76323634302E6300000000C5D4F200FFFFFFFF33433A5C55736572735C64656C6C5C4465736B746F705C6769746875625C64616F6368655C436F72655C5372635C6D61696E2E6300000000066D61696E2E6300000000FFDC7800FFFFFFFF30433A5C55736572735C64656C6C5C4465736B746F705C6769746875625C64616F6368655C4253505C6F76323634302E6800000000086F76323634302E6800000000BECEA100FFFFFFFF33433A5C55736572735C64656C6C5C4465736B746F705C6769746875625C64616F6368655C436F72655C5372635C64636D692E63000000000664636D692E6300000000F0A0A100FFFFFFFF33433A5C55736572735C64656C6C5C4465736B746F705C6769746875625C64616F6368655C4253505C6F76323634306366672E68000000000B6F76323634306366672E6800000000BCA8E100FFFFFFFF2D433A5C55736572735C64656C6C5C4465736B746F705C6769746875625C64616F6368655C4253505C4C43442E6300000000054C43442E63000000009CC1B600FFFFFFFF2E433A5C55736572735C64656C6C5C4465736B746F705C6769746875625C64616F6368655C4253505C736363622E630000000006736363622E6300000000F7B88600FFFFFFFF33433A5C55736572735C64656C6C5C4465736B746F705C6769746875625C64616F6368655C436F72655C496E635C6D61696E2E6800000000066D61696E2E6800000000D9ADC200FFFFFFFF32433A5C55736572735C64656C6C5C4465736B746F705C6769746875625C64616F6368655C436F72655C5372635C7370692E6300000000057370692E6300000000A5C2D700FFFFFFFF58433A5C55736572735C64656C6C5C4465736B746F705C6769746875625C64616F6368655C447269766572735C53544D3332463478785F48414C5F4472697665725C496E635C73746D3332663478785F68616C5F7370692E68000000001373746D3332663478785F68616C5F7370692E6800000000B3A6BE00FFFFFFFF33433A5C55736572735C64656C6C5C4465736B746F705C6769746875625C64616F6368655C436F72655C5372635C6770696F2E6300000000066770696F2E6300000000EAD6A300FFFFFFFF33433A5C55736572735C64656C6C5C4465736B746F705C6769746875625C64616F6368655C436F72655C496E635C6770696F2E6800000000066770696F2E6800000000F6FA7D00FFFFFFFF0100000010000000C5D4F200FFDC7800BECEA100F0A0A100BCA8E1009CC1B600F7B88600D9ADC200A5C2D700B3A6BE00EAD6A300F6FA7D00B5E99D005FC3CF00C1838300CACAD5000100000000000000020000006B010000660000008007000063030000</Data>
+        <Len>387</Len>
+        <Data>0100000004000000010000000100000001000000010000000000000002000000000000000100000001000000000000002800000028000000010000000300000002000000010000002E433A5C55736572735C64656C6C5C4465736B746F705C6769746875625C64616F6368655C4253505C737230342E630000000006737230342E6300000000B5E99D00FFFFFFFF2E433A5C55736572735C64656C6C5C4465736B746F705C6769746875625C64616F6368655C4253505C737230342E680000000006737230342E6800000000FFDC7800FFFFFFFF33433A5C55736572735C64656C6C5C4465736B746F705C6769746875625C64616F6368655C436F72655C5372635C6D61696E2E6300000000066D61696E2E6300000000BECEA100FFFFFFFF0100000010000000C5D4F200FFDC7800BECEA100F0A0A100BCA8E1009CC1B600F7B88600D9ADC200A5C2D700B3A6BE00EAD6A300F6FA7D00B5E99D005FC3CF00C1838300CACAD5000100000000000000020000006B010000660000008007000063030000</Data>
       </MDITabState>
     </MDIClientArea>
     <ViewEx>
@@ -3603,111 +3603,30 @@
     <ActiveMDIGroup>0</ActiveMDIGroup>
     <MDIGroup>
       <Size>100</Size>
-      <ActiveTab>1</ActiveTab>
+      <ActiveTab>2</ActiveTab>
       <Doc>
-        <Name>..\BSP\ov2640.c</Name>
-        <ColumnNumber>21</ColumnNumber>
-        <TopLine>230</TopLine>
-        <CurrentLine>263</CurrentLine>
+        <Name>..\BSP\sr04.c</Name>
+        <ColumnNumber>0</ColumnNumber>
+        <TopLine>66</TopLine>
+        <CurrentLine>84</CurrentLine>
+        <Folding>1</Folding>
+        <ContractedFolders></ContractedFolders>
+        <PaneID>0</PaneID>
+      </Doc>
+      <Doc>
+        <Name>../BSP/sr04.h</Name>
+        <ColumnNumber>29</ColumnNumber>
+        <TopLine>1</TopLine>
+        <CurrentLine>20</CurrentLine>
         <Folding>1</Folding>
         <ContractedFolders></ContractedFolders>
         <PaneID>0</PaneID>
       </Doc>
       <Doc>
         <Name>../Core/Src/main.c</Name>
-        <ColumnNumber>8</ColumnNumber>
-        <TopLine>107</TopLine>
-        <CurrentLine>131</CurrentLine>
-        <Folding>1</Folding>
-        <ContractedFolders></ContractedFolders>
-        <PaneID>0</PaneID>
-      </Doc>
-      <Doc>
-        <Name>..\BSP\ov2640.h</Name>
-        <ColumnNumber>23</ColumnNumber>
-        <TopLine>101</TopLine>
-        <CurrentLine>140</CurrentLine>
-        <Folding>1</Folding>
-        <ContractedFolders></ContractedFolders>
-        <PaneID>0</PaneID>
-      </Doc>
-      <Doc>
-        <Name>../Core/Src/dcmi.c</Name>
-        <ColumnNumber>59</ColumnNumber>
-        <TopLine>169</TopLine>
-        <CurrentLine>193</CurrentLine>
-        <Folding>1</Folding>
-        <ContractedFolders></ContractedFolders>
-        <PaneID>0</PaneID>
-      </Doc>
-      <Doc>
-        <Name>..\BSP\ov2640cfg.h</Name>
-        <ColumnNumber>13</ColumnNumber>
-        <TopLine>372</TopLine>
-        <CurrentLine>417</CurrentLine>
-        <Folding>1</Folding>
-        <ContractedFolders></ContractedFolders>
-        <PaneID>0</PaneID>
-      </Doc>
-      <Doc>
-        <Name>..\BSP\LCD.c</Name>
-        <ColumnNumber>27</ColumnNumber>
-        <TopLine>132</TopLine>
-        <CurrentLine>185</CurrentLine>
-        <Folding>1</Folding>
-        <ContractedFolders></ContractedFolders>
-        <PaneID>0</PaneID>
-      </Doc>
-      <Doc>
-        <Name>..\BSP\sccb.c</Name>
-        <ColumnNumber>0</ColumnNumber>
-        <TopLine>148</TopLine>
-        <CurrentLine>162</CurrentLine>
-        <Folding>1</Folding>
-        <ContractedFolders></ContractedFolders>
-        <PaneID>0</PaneID>
-      </Doc>
-      <Doc>
-        <Name>../Core/Inc/main.h</Name>
-        <ColumnNumber>19</ColumnNumber>
-        <TopLine>18</TopLine>
-        <CurrentLine>38</CurrentLine>
-        <Folding>1</Folding>
-        <ContractedFolders></ContractedFolders>
-        <PaneID>0</PaneID>
-      </Doc>
-      <Doc>
-        <Name>../Core/Src/spi.c</Name>
-        <ColumnNumber>56</ColumnNumber>
-        <TopLine>13</TopLine>
-        <CurrentLine>47</CurrentLine>
-        <Folding>1</Folding>
-        <ContractedFolders></ContractedFolders>
-        <PaneID>0</PaneID>
-      </Doc>
-      <Doc>
-        <Name>../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h</Name>
-        <ColumnNumber>31</ColumnNumber>
-        <TopLine>246</TopLine>
-        <CurrentLine>262</CurrentLine>
-        <Folding>1</Folding>
-        <ContractedFolders></ContractedFolders>
-        <PaneID>0</PaneID>
-      </Doc>
-      <Doc>
-        <Name>../Core/Src/gpio.c</Name>
-        <ColumnNumber>14</ColumnNumber>
-        <TopLine>10</TopLine>
-        <CurrentLine>28</CurrentLine>
-        <Folding>1</Folding>
-        <ContractedFolders></ContractedFolders>
-        <PaneID>0</PaneID>
-      </Doc>
-      <Doc>
-        <Name>../Core/Inc/gpio.h</Name>
-        <ColumnNumber>17</ColumnNumber>
-        <TopLine>1</TopLine>
-        <CurrentLine>29</CurrentLine>
+        <ColumnNumber>39</ColumnNumber>
+        <TopLine>108</TopLine>
+        <CurrentLine>137</CurrentLine>
         <Folding>1</Folding>
         <ContractedFolders></ContractedFolders>
         <PaneID>0</PaneID>

@@ -57,6 +57,9 @@ void MX_GPIO_Init(void)
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(Trig_GPIO_Port, Trig_Pin, GPIO_PIN_SET);
+
+  /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOD, SPI_CS_Pin|LCD_DC_Pin|LCD_RST_Pin, GPIO_PIN_SET);
 
   /*Configure GPIO pin Output Level */
@@ -64,6 +67,13 @@ void MX_GPIO_Init(void)
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOB, OV2640_SCL_Pin|OV2640_SDA_Pin, GPIO_PIN_SET);
+
+  /*Configure GPIO pin : Trig_Pin */
+  GPIO_InitStruct.Pin = Trig_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
+  HAL_GPIO_Init(Trig_GPIO_Port, &GPIO_InitStruct);
 
   /*Configure GPIO pins : SPI_CS_Pin LCD_DC_Pin LCD_RST_Pin */
   GPIO_InitStruct.Pin = SPI_CS_Pin|LCD_DC_Pin|LCD_RST_Pin;

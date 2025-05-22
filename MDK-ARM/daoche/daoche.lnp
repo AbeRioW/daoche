@@ -5,6 +5,7 @@
 "daoche\dcmi.o"
 "daoche\dma.o"
 "daoche\spi.o"
+"daoche\tim.o"
 "daoche\stm32f4xx_it.o"
 "daoche\stm32f4xx_hal_msp.o"
 "daoche\stm32f4xx_hal_dcmi.o"
@@ -23,11 +24,14 @@
 "daoche\stm32f4xx_hal.o"
 "daoche\stm32f4xx_hal_exti.o"
 "daoche\stm32f4xx_hal_spi.o"
+"daoche\stm32f4xx_hal_tim.o"
+"daoche\stm32f4xx_hal_tim_ex.o"
 "daoche\system_stm32f4xx.o"
 "daoche\lcd.o"
 "daoche\sccb.o"
 "daoche\ov2640.o"
 "daoche\font.o"
+"daoche\sr04.o"
 --strict --scatter "daoche\daoche.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

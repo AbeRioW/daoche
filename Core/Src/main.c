@@ -21,6 +21,7 @@
 #include "dcmi.h"
 #include "dma.h"
 #include "spi.h"
+#include "tim.h"
 #include "gpio.h"
 
 /* Private includes ----------------------------------------------------------*/
@@ -28,6 +29,7 @@
 #include "LCD.h"
 #include "ov2640.h"
 #include "stdio.h"
+#include "sr04.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -73,7 +75,8 @@ int main(void)
 {
 
   /* USER CODE BEGIN 1 */
-
+		char show_image[20];
+	  int i_count=0;
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -97,19 +100,19 @@ int main(void)
   MX_DMA_Init();
   MX_SPI3_Init();
   MX_DCMI_Init();
+  MX_TIM1_Init();
   /* USER CODE BEGIN 2 */
-//SysTick_Init();
-    // 初始化LCD
-    LCD_Init();
-		 LCD_Fill(COLOR_BLACK);
-		while(ov2640_init());
-		OV2640_UXGAConfig();
+  // 初始化LCD
+  LCD_Init();
+	LCD_Fill(COLOR_BLACK);
+//	while(ov2640_init());
+//	OV2640_UXGAConfig();
 
 
 
 
     // 开始捕获图像
-    OV2640_StartCapture();		
+ //   OV2640_StartCapture();		
         // 开始连续捕获
 //    // 填充屏幕颜色
 //    LCD_Fill(COLOR_RED);
@@ -128,9 +131,20 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+		if(get_image)
+		{
+			get_image = false;
+			ILI9341_DrawImage(0, 0, QVGA_WIDTH, QVGA_HEIGHT, image_buffer);
+			i_count++;
+			sprintf(show_image,"Capture:%d",i_count);
+			LCD_ShowString(0,180,16,(uint8_t*)show_image,0);	
+		}
+		
+
 		if(!ov_status)
 		{
-				
+			sr04_trigger_measurement();
+			HAL_Delay(1000);
 		}
   }
   /* USER CODE END 3 */

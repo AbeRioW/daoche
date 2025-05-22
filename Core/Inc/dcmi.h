@@ -37,7 +37,7 @@ extern "C" {
 extern DCMI_HandleTypeDef hdcmi;
 
 /* USER CODE BEGIN Private defines */
-
+extern bool get_image;
 /* USER CODE END Private defines */
 
 void MX_DCMI_Init(void);

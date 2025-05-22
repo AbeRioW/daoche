@@ -27,52 +27,20 @@ Project File Date:  05/22/2025
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 6 (build 750)', folder: 'D:\programFiles\KEIL5\ARM\ARMCC\Bin'
 Build target 'daoche'
-compiling LCD.c...
-..\BSP\LCD.h(20): warning:  #1295-D: Deprecated declaration createCheckerboard - give arg types
-  void createCheckerboard();
-..\BSP\LCD.c: 1 warning, 0 errors
-compiling font.c...
-..\BSP\LCD.h(20): warning:  #1295-D: Deprecated declaration createCheckerboard - give arg types
-  void createCheckerboard();
-..\BSP\font.c(200): warning:  #1-D: last line of file ends without a newline
-  }; 
-..\BSP\font.c: 2 warnings, 0 errors
 compiling main.c...
 ../BSP/LCD.h(20): warning:  #1295-D: Deprecated declaration createCheckerboard - give arg types
   void createCheckerboard();
 ../BSP/sccb.h(84): warning:  #1-D: last line of file ends without a newline
   #endif
-../Core/Src/main.c: 2 warnings, 0 errors
-compiling ov2640.c...
-..\BSP\sccb.h(84): warning:  #1-D: last line of file ends without a newline
-  #endif
-../BSP/LCD.h(20): warning:  #1295-D: Deprecated declaration createCheckerboard - give arg types
-  void createCheckerboard();
-..\BSP\ov2640.c(19): warning:  #177-D: variable "i"  was declared but never referenced
-  		uint16_t reg,i;
-..\BSP\ov2640.c(545): warning:  #1-D: last line of file ends without a newline
-  }
-..\BSP\ov2640.c: 4 warnings, 0 errors
-compiling gpio.c...
-../BSP/sccb.h(84): warning:  #1-D: last line of file ends without a newline
-  #endif
-../BSP/LCD.h(20): warning:  #1295-D: Deprecated declaration createCheckerboard - give arg types
-  void createCheckerboard();
-../Core/Src/gpio.c: 2 warnings, 0 errors
-compiling dcmi.c...
-../BSP/LCD.h(20): warning:  #1295-D: Deprecated declaration createCheckerboard - give arg types
-  void createCheckerboard();
-../BSP/sccb.h(84): warning:  #1-D: last line of file ends without a newline
-  #endif
-../Core/Src/dcmi.c(202): warning:  #223-D: function "sprintf" declared implicitly
-  		 sprintf(show_data,"Capture:%d",i);
-../Core/Src/dcmi.c(203): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "uint8_t *"
-  		 LCD_ShowString(0,180,16,show_data,0);	
-../Core/Src/dcmi.c: 4 warnings, 0 errors
+../Core/Src/main.c(78): warning:  #177-D: variable "show_image"  was declared but never referenced
+  		char show_image[20];
+../Core/Src/main.c(79): warning:  #177-D: variable "i_count"  was declared but never referenced
+  	  int i_count=0;
+../Core/Src/main.c: 4 warnings, 0 errors
 linking...
-Program Size: Code=15718 RO-data=4938 RW-data=36 ZI-data=21084  
+Program Size: Code=22230 RO-data=3294 RW-data=48 ZI-data=21152  
 FromELF: creating hex file...
-"daoche\daoche.axf" - 0 Error(s), 15 Warning(s).
+"daoche\daoche.axf" - 0 Error(s), 4 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -96,7 +64,7 @@ Package Vendor: Keil
 
    * Component: ARM::CMSIS:CORE:5.6.0
       Include file:  CMSIS/Core/Include/tz_context.h
-Build Time Elapsed:  00:00:03
+Build Time Elapsed:  00:00:02
 </pre>
 </body>
 </html>
